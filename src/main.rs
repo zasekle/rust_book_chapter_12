@@ -4,11 +4,10 @@ use std::process;
 use rust_book_chapter_11::Config;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
     //dbg! is something for `quick and dirty debugging`. I should probably use this more.
     // dbg!(args);
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
